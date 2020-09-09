@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { PokemonTypes } from 'src/app/models/pokemonTypes.enum';
+import { ElementalTypeBackgroundColor } from 'src/app/shared/colorMappers/index'
 
 @Component({
   selector: 'app-pokemon-type-filter',
@@ -29,17 +30,24 @@ export class PokemonTypeFilterComponent implements OnInit {
     let clickedElement = $event.target || $event.srcElement;
 
     if( clickedElement.nodeName === "BUTTON" ) {
-      if (clickedElement.classList.contains("active")) {
-        clickedElement.classList.remove("active");
+      if (clickedElement.classList.contains("type-filter-active")) {
+        clickedElement.classList.remove("type-filter-active");
       }
       else{
-        let anyActivatedButtons = clickedElement.parentElement.parentElement.querySelector(".active");
+        let anyActivatedButtons = clickedElement.parentElement.parentElement.querySelector(".type-filter-active");
         if (anyActivatedButtons) {
-          anyActivatedButtons.classList.remove("active");
+          anyActivatedButtons.classList.remove("type-filter-active");
         }
-        clickedElement.className += " active";
+        clickedElement.className += " type-filter-active";
       }
     }
     this.filterEvent.emit(this.typeId);
+  }
+
+  public getElementalTypeBackgroundColor(elementalTypeName: string) {
+    const styles = {
+        "background-color": ElementalTypeBackgroundColor[elementalTypeName],
+    };
+    return styles;
   }
 }
