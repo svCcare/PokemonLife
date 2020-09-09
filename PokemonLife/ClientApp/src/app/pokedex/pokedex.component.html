@@ -1,0 +1,14 @@
+<app-pokemon-type-filter (filterEvent)="setTypeFilter($event)"></app-pokemon-type-filter>
+<app-pokemon-stat-filter (filterEvent)="setStatFilter($event)"></app-pokemon-stat-filter>
+<button (click)="resetFilter()">Reset</button>
+
+<ul *ngIf="pokemons">
+  <li *ngFor="let pokemon of filteredPokemonList" (click)="showDetails(pokemon)">
+    <div>
+        {{pokemon.id}} - {{pokemon.name}}
+    </div>
+    <div *ngIf="pokemon.id === pokemonStats?.id">
+      <app-pokemon-details [pokemonStats]="pokemonStats"></app-pokemon-details>
+    </div>
+  </li>
+</ul>

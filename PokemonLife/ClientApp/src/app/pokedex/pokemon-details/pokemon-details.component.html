@@ -1,0 +1,41 @@
+<div class="container-fluid">
+  <span (click)="toggleStatsVisibility()">{{statsDisplayed ? 'Hide' : 'Show'}} Stats</span>
+  <div *ngIf="statsDisplayed">
+      <table>
+          <tr>
+              <th colspan="8" rowspan="2" style="width: 75%">Stat</th>
+              <th colspan="4" style="width: 25%">Range</th>
+          </tr>
+          <tr>
+              <td colspan="2">At Lv. 50</td>
+              <td colspan="2">At Lv. 100</td>
+          </tr>
+          <tr *ngFor='let stat of statsDictionary | keyvalue: originalOrder'>
+              <td colspan="3" class="stat-name-column" [ngStyle]="getStatBackgroundColor(stat.key)">
+                  <div style="float:left">{{stat.key | convertStatNameToShorter}}: </div>
+                  <div style="float:right">{{stat.value}}</div>
+              </td>
+              <td colspan="5" class="stat-value-display-column" [ngStyle]="getStatBackgroundColor(stat.key)">
+                  <div 
+                    class="stat-value-display-bar"
+                    [ngStyle]="getStatColor(stat.key)"
+                    [style.width.%]="getStatWidth(stat.value)">
+                  </div>
+              </td>
+              <td colspan="2" [ngStyle]="getStatBackgroundColor(stat.key)">
+                <small>{{getExpectedStat(stat.value, false, 50, stat.key)}}-{{getExpectedStat(stat.value, true, 50, stat.key)}}</small>
+            </td>
+            <td colspan="2" [ngStyle]="getStatBackgroundColor(stat.key)">
+                <small>{{getExpectedStat(stat.value, false, 100, stat.key)}}-{{getExpectedStat(stat.value, true, 100, stat.key)}}</small>
+            </td>
+          </tr>
+          <tr>
+              <td colspan="3">
+                  <div style="float:left">Total: </div>
+                  <div style="float:right">{{statSum}}</div>
+              </td>
+              <td colspan="9"><a [routerLink]="['/pokemonlist', statSum]">Other Pokémon with this total</a></td>
+          </tr>
+      </table>
+  </div>
+</div>

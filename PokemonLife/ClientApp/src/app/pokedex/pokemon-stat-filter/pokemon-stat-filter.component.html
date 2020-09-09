@@ -1,0 +1,30 @@
+<div>
+  <label for="health">Health: </label>
+  <input type="number" name="health" [(ngModel)]="healthStat" />
+</div>
+<div>
+    <label for="attack">Attack: </label>
+    <input type="number" name="attack" [(ngModel)]="attackStat" />
+</div>
+
+<div>
+    <label for="defence">Defence: </label>
+    <input type="number" name="defence" [(ngModel)]="defenceStat" />
+</div>
+
+<div>
+    <label for="spAtk">Special attack: </label>
+    <input type="number" name="spAtk" [(ngModel)]="spAtkStat" />
+</div>
+<div>
+    
+    <label for="spDef">Special defence: </label>
+    <input type="number" name="spDef" [(ngModel)]="spDefStat" />
+</div>
+<div>
+    
+    <label for="speed">Speed: </label>
+    <input type="number" name="speed" [(ngModel)]="speedStat" />
+</div>
+
+<button (click)="filter($event)">Apply</button>

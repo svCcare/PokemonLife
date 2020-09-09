@@ -1,0 +1,3 @@
+<div class="btn-group" (click)="onButtonGroupClick($event)" *ngFor="let type of PokemonTypes | enumToArray" style="display: inline-block">
+  <button class="btn btn-secondary" (click)="setFilter(type.id)" type="button">{{ type.value }}</button>
+</div>
