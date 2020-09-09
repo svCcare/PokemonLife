@@ -8,29 +8,27 @@ import { Stats } from 'src/app/models/stats.model';
 })
 export class PokemonStatFilterComponent implements OnInit {
 
+  @Output() filterEvent = new EventEmitter<Stats>();
+  public statsArray:number[] = [undefined,undefined,undefined,undefined,undefined,undefined,];
+
   constructor() { }
 
-  @Output() filterEvent = new EventEmitter<Stats>();
-  public healthStat: number;
-  public attackStat: number;
-  public defenceStat: number;
-  public spAtkStat: number;
-  public spDefStat: number;
-  public speedStat: number;
-  
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   public filter(){
     const stats:Stats = 
     {
-      health:this.healthStat,
-      attack:this.attackStat,
-      defence:this.defenceStat,
-      specialAttack:this.spAtkStat,
-      specialDefence:this.spDefStat,
-      speed:this.speedStat,
+      health:this.statsArray[0],
+      attack:this.statsArray[1],
+      defence:this.statsArray[2],
+      specialAttack:this.statsArray[3],
+      specialDefence:this.statsArray[4],
+      speed:this.statsArray[5],
     }; 
     this.filterEvent.emit(stats);
+  }
+
+  trackByIndex(index: number, obj: any): any {
+    return index;
   }
 }

@@ -1,30 +1,13 @@
-<div>
-  <label for="health">Health: </label>
-  <input type="number" name="health" [(ngModel)]="healthStat" />
-</div>
-<div>
-    <label for="attack">Attack: </label>
-    <input type="number" name="attack" [(ngModel)]="attackStat" />
-</div>
-
-<div>
-    <label for="defence">Defence: </label>
-    <input type="number" name="defence" [(ngModel)]="defenceStat" />
-</div>
-
-<div>
-    <label for="spAtk">Special attack: </label>
-    <input type="number" name="spAtk" [(ngModel)]="spAtkStat" />
-</div>
-<div>
-    
-    <label for="spDef">Special defence: </label>
-    <input type="number" name="spDef" [(ngModel)]="spDefStat" />
-</div>
-<div>
-    
-    <label for="speed">Speed: </label>
-    <input type="number" name="speed" [(ngModel)]="speedStat" />
-</div>
+<form class="form-group">
+    <div *ngFor="let stat of statsArray; let index = index; trackBy:trackByIndex;">
+        <label class="sr-only" for="inlineFormInputGroupUsername2"></label>
+        <div class="input-group mb-1 mr-sm-1 w-25">
+          <div class="input-group-prepend">
+            <div class="input-group-text">Health</div>
+          </div>
+          <input name="a{{index}}" type="number" class="form-control" id="inlineFormInputGroupUsername2" [(ngModel)]="statsArray[index]">
+        </div>
+    </div>
+</form>
 
 <button (click)="filter($event)">Apply</button>
