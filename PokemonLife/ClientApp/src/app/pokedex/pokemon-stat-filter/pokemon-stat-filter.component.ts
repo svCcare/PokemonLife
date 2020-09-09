@@ -10,20 +10,27 @@ export class PokemonStatFilterComponent implements OnInit {
 
   @Output() filterEvent = new EventEmitter<Stats>();
   public statsArray:number[] = [undefined,undefined,undefined,undefined,undefined,undefined,];
-
+  public statsDictionary: Map<string,number> = new Map<string, number>();
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    this.statsDictionary.set("Health", undefined);
+    this.statsDictionary.set("Attack", undefined);
+    this.statsDictionary.set("Defence", undefined);
+    this.statsDictionary.set("Special Attack", undefined);
+    this.statsDictionary.set("Special Defence", undefined);
+    this.statsDictionary.set("Speed", undefined);
+  }
 
   public filter(){
     const stats:Stats = 
     {
-      health:this.statsArray[0],
-      attack:this.statsArray[1],
-      defence:this.statsArray[2],
-      specialAttack:this.statsArray[3],
-      specialDefence:this.statsArray[4],
-      speed:this.statsArray[5],
+      health:this.statsDictionary[0],
+      attack:this.statsDictionary[1],
+      defence:this.statsDictionary[2],
+      specialAttack:this.statsDictionary[3],
+      specialDefence:this.statsDictionary[4],
+      speed:this.statsDictionary[5],
     }; 
     this.filterEvent.emit(stats);
   }
