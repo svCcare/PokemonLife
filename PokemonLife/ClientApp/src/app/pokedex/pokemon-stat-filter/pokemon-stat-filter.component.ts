@@ -11,6 +11,7 @@ export class PokemonStatFilterComponent implements OnInit {
   @Output() filterEvent = new EventEmitter<Stats>();
   public statsArray:number[] = [undefined,undefined,undefined,undefined,undefined,undefined,];
   public statsDictionary: Map<string,number> = new Map<string, number>();
+  public showFilter: boolean = false;
   constructor() { }
 
   ngOnInit() { 
@@ -33,6 +34,10 @@ export class PokemonStatFilterComponent implements OnInit {
       speed:this.statsDictionary[5],
     }; 
     this.filterEvent.emit(stats);
+  }
+
+  public toggleVisibility(){
+    this.showFilter = !this.showFilter;
   }
 
   trackByIndex(index: number, obj: any): any {

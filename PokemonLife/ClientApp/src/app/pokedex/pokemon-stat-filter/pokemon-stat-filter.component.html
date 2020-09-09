@@ -1,8 +1,8 @@
 <div class="card w-100">
-    <div class="card-header">
-      Stats filter
+    <div class="card-header" (click)="toggleVisibility()" style="cursor: pointer;">
+      {{showFilter ? 'Hide' : 'Show'}} stats filter
     </div>
-    <div class="card-body">
+    <div *ngIf="showFilter" class="card-body">
         <form class="form-group">
             <div *ngFor="let stat of statsDictionary | keyvalue: originalOrder; let index = index; trackBy:trackByIndex;">
                 <label class="sr-only" for="inlineFormInputGroupUsername2"></label>
