@@ -1,13 +1,22 @@
-<form class="form-group">
-    <div *ngFor="let stat of statsArray; let index = index; trackBy:trackByIndex;">
-        <label class="sr-only" for="inlineFormInputGroupUsername2"></label>
-        <div class="input-group mb-1 mr-sm-1 w-25">
-          <div class="input-group-prepend">
-            <div class="input-group-text">Health</div>
-          </div>
-          <input name="a{{index}}" type="number" class="form-control" id="inlineFormInputGroupUsername2" [(ngModel)]="statsArray[index]">
-        </div>
+<div class="card w-100">
+    <div class="card-header">
+      Stats filter
     </div>
-</form>
-
+    <div class="card-body">
+        <form class="form-group">
+            <div *ngFor="let stat of statsDictionary | keyvalue: originalOrder; let index = index; trackBy:trackByIndex;">
+                <label class="sr-only" for="inlineFormInputGroupUsername2"></label>
+                <div class="input-group mb-1 mr-sm-1">
+                  <div class="input-group-prepend w-50">
+                    <div class="input-group-text w-100">{{stat.key}}</div>
+                  </div>
+                  <div class="w-25">
+                      <input name="a{{index}}" type="number" class="form-control" id="inlineFormInputGroupUsername2" [(ngModel)]="statsDictionary[index]">
+                  </div>
+                </div>
+            </div>
+        </form>
+    </div>
+  </div>
+  
 <button (click)="filter($event)">Apply</button>
