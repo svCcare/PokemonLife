@@ -16,7 +16,7 @@ export class PokedexComponent implements OnInit {
   public pokemonsStats: PokemonStats[] = [];
   public pokemonStats: PokemonStats;
   public filteredPokemonList: Pokemon[];
-  public filters: PokedexFilters = {stats:undefined, typeId:undefined};
+  public filters: PokedexFilters = { stats:undefined, typeId:undefined };
   
   constructor(private pokemonService: PokemonService) { }
 
@@ -77,6 +77,8 @@ export class PokedexComponent implements OnInit {
   }
 
   public resetFilter(){
+    this.filters.typeId = undefined;
+    this.filters.stats = undefined;
     this.filteredPokemonList = this.pokemons;
   }
 }
