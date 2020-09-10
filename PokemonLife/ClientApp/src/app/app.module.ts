@@ -15,6 +15,7 @@ import { PokemonDetailsComponent } from './pokedex/pokemon-details/pokemon-detai
 import { ConvertStatNameToShorterPipe } from './shared/pipes/convert-stat-name-to-shorter.pipe';
 import { PokemonTypeFilterComponent } from './pokedex/pokemon-type-filter/pokemon-type-filter.component';
 import { PokemonStatFilterComponent } from './pokedex/pokemon-stat-filter/pokemon-stat-filter.component';
+import { PokemonComparerComponent } from './pokedex/pokemon-comparer/pokemon-comparer.component';
 
 @NgModule({
   declarations: [		
@@ -28,7 +29,8 @@ import { PokemonStatFilterComponent } from './pokedex/pokemon-stat-filter/pokemo
     EnumToArrayPipe,
     ConvertStatNameToShorterPipe,
     PokemonTypeFilterComponent,
-    PokemonStatFilterComponent
+    PokemonStatFilterComponent,
+    PokemonComparerComponent
    ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
