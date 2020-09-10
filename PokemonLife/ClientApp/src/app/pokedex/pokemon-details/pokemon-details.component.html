@@ -35,7 +35,7 @@
                   <div style="float:right">{{statSum}}</div>
               </td>
               <td colspan="5"><a [routerLink]="['/pokemonlist', statSum]">Other Pokémon with this total</a></td>
-              <td colspan="4"><span (click)="addToCompare(pokemonStats.id)" style="cursor: pointer;">{{addedForComparing ? 'Remove from' : 'Add for '}} comparing</span></td>
+              <td colspan="4"><span (click)="compare(pokemonStats.id)" style="cursor: pointer;">{{addedForComparing ? 'Remove from' : 'Add for '}} comparing</span></td>
           </tr>
       </table>
   </div>

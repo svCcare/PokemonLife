@@ -70,7 +70,7 @@ export class PokemonDetailsComponent implements OnInit {
     return 100 * value/255;
   }
 
-  public addToCompare(id:number): void{
+  public compare(id:number): void{
     this.addedForComparing = !this.addedForComparing;
     this.compareEvent.emit(id);
   }
