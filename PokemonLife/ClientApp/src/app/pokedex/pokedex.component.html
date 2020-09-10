@@ -8,7 +8,10 @@
         {{pokemon.id}} - {{pokemon.name}}
     </div>
     <div *ngIf="pokemon.id === pokemonStats?.id">
-      <app-pokemon-details [pokemonStats]="pokemonStats"></app-pokemon-details>
+      <app-pokemon-details
+       (compareEvent)="addToCompare($event)"
+       [pokemonStats]="pokemonStats">
+      </app-pokemon-details>
     </div>
   </li>
 </ul>

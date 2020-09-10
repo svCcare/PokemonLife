@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { PokemonStats } from 'src/app/models/pokemonStats.model';
 import { StatTypeBackgroundColor, StatTypeBorderColor, StatTypeForegroundColor } from 'src/app/shared/colorMappers/index'
 import { KeyValue } from '@angular/common';
@@ -10,11 +10,13 @@ import { KeyValue } from '@angular/common';
 })
 export class PokemonDetailsComponent implements OnInit {
 
-  @Input() pokemonStats: PokemonStats
-
+  @Input() pokemonStats: PokemonStats;
+  @Output() compareEvent = new EventEmitter<number>();
+  
   public statsDisplayed: boolean = false;
   public statsDictionary: Map<string,number> = new Map<string, number>();
   public statSum: number;
+  public addedForComparing: boolean = false;
 
   constructor() { }
 
@@ -66,5 +68,10 @@ export class PokemonDetailsComponent implements OnInit {
 
   public getStatWidth(value: number):number {
     return 100 * value/255;
+  }
+
+  public addToCompare(id:number): void{
+    this.addedForComparing = !this.addedForComparing;
+    this.compareEvent.emit(id);
   }
 }

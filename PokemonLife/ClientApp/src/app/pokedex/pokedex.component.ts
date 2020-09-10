@@ -39,6 +39,10 @@ export class PokedexComponent implements OnInit {
     this.pokemonStats = this.pokemonsStats.filter(x => x.id === pokemon.id)[0];
   }
 
+  public addToCompare(id:number){
+    console.log(id);
+  }
+
   public setTypeFilter(typeId:number){
     this.filters.typeId = typeId;
     this.applyFilters();
