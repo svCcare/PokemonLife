@@ -1,34 +1,58 @@
 <table>
   <tr>
-      <th colspan="2">Name</th>
-      <th colspan="1">HP</th>
-      <th colspan="1">Atk</th>
-      <th colspan="1">Def</th>
-      <th colspan="1">SpAtk</th>
-      <th colspan="1">SpDef</th>
-      <th colspan="1">Speed</th>
+      <th colspan="2" style="width: 22%">Name</th>
+      <th colspan="1" style="width: 13%">HP</th>
+      <th colspan="1" style="width: 13%">Atk</th>
+      <th colspan="1" style="width: 13%">Def</th>
+      <th colspan="1" style="width: 13%">SpAtk</th>
+      <th colspan="1" style="width: 13%">SpDef</th>
+      <th colspan="1" style="width: 13%">Speed</th>
   </tr>
-  <tr *ngFor='let id of ids'>
+  <tr *ngFor='let pokemonStats of pokemonsStats'>
     <td colspan="2">
-      {{id}}
+      {{pokemonStats.id}}
     </td>
     <td colspan="1">
-      45
+      <div 
+        class="stat-value-display-bar"
+        [ngStyle]="getStatColor('Health')"
+        [style.width.%]="getStatWidth(pokemonStats.health)">
+      </div>
     </td>
     <td colspan="1">
-      60
+      <div 
+        class="stat-value-display-bar"
+        [ngStyle]="getStatColor('Attack')"
+        [style.width.%]="getStatWidth(pokemonStats.attack)">
+      </div>
     </td>
     <td colspan="1">
-      70
+      <div 
+        class="stat-value-display-bar"
+        [ngStyle]="getStatColor('Defence')"
+        [style.width.%]="getStatWidth(pokemonStats.defence)">
+      </div>
     </td>
     <td colspan="1">
-      20
+      <div 
+      class="stat-value-display-bar"
+      [ngStyle]="getStatColor('SpecialAttack')"
+      [style.width.%]="getStatWidth(pokemonStats.specialAttack)">
+    </div>
     </td>
     <td colspan="1">
-      10
+      <div 
+        class="stat-value-display-bar"
+        [ngStyle]="getStatColor('SpecialDefence')"
+        [style.width.%]="getStatWidth(pokemonStats.specialDefence)">
+      </div>
     </td>
     <td colspan="1">
-      30
+      <div 
+        class="stat-value-display-bar"
+        [ngStyle]="getStatColor('Speed')"
+        [style.width.%]="getStatWidth(pokemonStats.speed)">
+      </div>
     </td>
   </tr>
 </table>

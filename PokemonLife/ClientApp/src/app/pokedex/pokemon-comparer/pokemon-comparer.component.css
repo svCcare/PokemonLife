@@ -6,3 +6,12 @@ table {
 table, th, td {
     border: 1px solid black;
 }
+
+.stat-value-display-column {
+    width: 40%;
+}
+
+.stat-value-display-bar {
+    height: 20px;
+    border: 1px solid #A60000;
+}

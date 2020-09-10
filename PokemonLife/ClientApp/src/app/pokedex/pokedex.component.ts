@@ -18,7 +18,7 @@ export class PokedexComponent implements OnInit {
   public pokemonStats: PokemonStats;
   public filteredPokemonList: Pokemon[];
   public filters: PokedexFilters = { stats:undefined, typeId:undefined };
-  public idsForComparing: number[] = [];
+  public pokemonsStatsForComparing: PokemonStats[] = [];
   
   constructor(private pokemonService: PokemonService) { }
 
@@ -42,11 +42,12 @@ export class PokedexComponent implements OnInit {
   }
 
   public addToCompare(id:number){
-    if (this.idsForComparing.find(x => x === id) > 0) {
-      this.idsForComparing = removeElementsByValue(this.idsForComparing, id);
+    if (this.pokemonsStatsForComparing.find(x => x.id === id)) {
+      this.pokemonsStatsForComparing = removeElementsByValue(this.pokemonsStatsForComparing, id);
     }
     else{
-      this.idsForComparing.push(id);
+      let pokemonStats = this.pokemonsStats.find(x => x.id === id);
+      this.pokemonsStatsForComparing.push(pokemonStats);
     }
   }
 
