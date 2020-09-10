@@ -1,5 +1,6 @@
 <app-pokemon-type-filter (filterEvent)="setTypeFilter($event)"></app-pokemon-type-filter>
 <app-pokemon-stat-filter (filterEvent)="setStatFilter($event)"></app-pokemon-stat-filter>
+<app-pokemon-comparer [ids]="idsForComparing"></app-pokemon-comparer>
 <button (click)="resetFilter()">Reset</button>
 
 <ul *ngIf="pokemons">

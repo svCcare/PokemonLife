@@ -4,6 +4,7 @@ import { Pokemon } from '../models/pokemon.model';
 import { PokemonStats } from '../models/pokemonStats.model';
 import { Stats } from '../models/stats.model';
 import { PokedexFilters } from './PokedexFilters';
+import { removeElementsByValue } from '../shared/arrayMethods'
 
 @Component({
   selector: 'app-pokedex',
@@ -17,6 +18,7 @@ export class PokedexComponent implements OnInit {
   public pokemonStats: PokemonStats;
   public filteredPokemonList: Pokemon[];
   public filters: PokedexFilters = { stats:undefined, typeId:undefined };
+  public idsForComparing: number[] = [];
   
   constructor(private pokemonService: PokemonService) { }
 
@@ -40,7 +42,12 @@ export class PokedexComponent implements OnInit {
   }
 
   public addToCompare(id:number){
-    console.log(id);
+    if (this.idsForComparing.find(x => x === id) > 0) {
+      this.idsForComparing = removeElementsByValue(this.idsForComparing, id);
+    }
+    else{
+      this.idsForComparing.push(id);
+    }
   }
 
   public setTypeFilter(typeId:number){
