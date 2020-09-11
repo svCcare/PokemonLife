@@ -68,7 +68,7 @@ export class PokedexComponent implements OnInit {
       .filter(item => 
           {
             let isMatching = true;
-            if (this.filters.typeId) {
+            if (this.filters.typeId !== undefined) {
               if (item.primaryTypeId != this.filters.typeId && item.secondaryTypeId != this.filters.typeId) {
                 return false;
               }
