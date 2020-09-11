@@ -7,20 +7,20 @@ import { PokemonStats } from 'src/app/models/pokemonStats.model';
   templateUrl: './pokemon-comparer.component.html',
   styleUrls: ['./pokemon-comparer.component.css']
 })
-export class PokemonComparerComponent implements OnInit, OnChanges {
+export class PokemonComparerComponent implements OnInit {
 
-  @Input() pokemonsStats: PokemonStats[] = [];
+  private _pokemonsStats: PokemonStats[] = [];
+  @Input() set pokemonsStats(value:PokemonStats[]) {
+    this._pokemonsStats = value;
+  }
+
+  get pokemonsStats():PokemonStats[] {
+    return this._pokemonsStats.sort((a:PokemonStats,b:PokemonStats) => a.id - b.id);
+  }
 
   constructor() { }
-  ngOnChanges(changes: SimpleChanges): void {
-    this.refreshSorting();
-  }
 
   ngOnInit() { }
-
-  public refreshSorting()  {
-    this.pokemonsStats.sort((a:PokemonStats,b:PokemonStats) => a.id - b.id);
-  }
 
   public getStatColor(statName: string) {
     const styles = {
