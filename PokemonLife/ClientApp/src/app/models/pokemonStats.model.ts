@@ -1,4 +1,5 @@
 export interface PokemonStats {
+    name: string;
     id: number;
     health: number;
     attack: number;

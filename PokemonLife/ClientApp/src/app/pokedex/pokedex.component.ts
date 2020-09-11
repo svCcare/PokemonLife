@@ -37,8 +37,9 @@ export class PokedexComponent implements OnInit {
     });
   }
 
-  public showDetails(pokemon){
+  public showDetails(pokemon:Pokemon){
     this.pokemonStats = this.pokemonsStats.filter(x => x.id === pokemon.id)[0];
+    this.pokemonStats.name = pokemon.name;
   }
 
   public addToCompare(id:number){
